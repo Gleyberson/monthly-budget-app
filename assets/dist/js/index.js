@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
+    if (localStorage.getItem('rememberMe') === 'true') {
+        sessionStorage.setItem('loggedIn', 'true');
+    }
+    if (sessionStorage.getItem('loggedIn') !== 'true') {
+        Swal.fire({
+            title: 'Debes iniciar sesión para acceder a esta página.',
+            icon: 'warning',
+            confirmButtonText: 'Aceptar'
+        });
+        location.href = 'login.html'; // Redirigir a la página de inicio de sesión
+    }
     const lista = document.getElementById('presupuestos-lista');
     lista.innerHTML = '';
     const presupuestos = JSON.parse(localStorage.getItem('presupuestos')) || [];
