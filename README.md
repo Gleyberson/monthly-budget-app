@@ -15,7 +15,7 @@ Aplicación web para crear, editar y gestionar presupuestos mensuales, con auten
 ## Estructura de carpetas
 
 ```
-entrega_2/
+monthly-budget-app/
 │
 ├── assets/
 │   └── dist/
