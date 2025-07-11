@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const lista = document.getElementById('presupuestos-lista');
     lista.innerHTML = '';
     const presupuestos = JSON.parse(localStorage.getItem('presupuestos')) || [];
-    console.log('Presupuestos cargados:', presupuestos);
     let totales = [];
     presupuestos.forEach((p, i) => {
         const col = document.createElement('div');
@@ -31,13 +30,10 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
         lista.appendChild(col);
-        console.log('categorias:', p.categorias);
         p.categorias.forEach(cat => {
-            console.log(`Categoría: ${cat.nombre}, Tipo: ${cat.tipo}, Monto: ${cat.monto}`);
             totales[cat.tipo] = (totales[cat.tipo] || 0) + cat.monto;
         });
         totales['ahorro'] = (totales['ingreso'] || 0) - (totales['gasto'] || 0);
-        console.log('Totales:', totales);
         document.getElementById('total-ingreso').textContent = totales.ingreso.toLocaleString('es-AR', {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
